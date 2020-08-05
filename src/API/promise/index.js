@@ -11,7 +11,7 @@ export const request = (api, method = MethodType.GET, params = {}, config = {}) 
     const data = (method === 'GET') ? 'params' : 'data'
     let headers = {
         // 'X-Request-With': 'XMLHttpRequest',
-        // 'Content-Type': 'application/json'
+        'Content-Type': 'application/json'
     }
     if (config.headers) {
         headers = {

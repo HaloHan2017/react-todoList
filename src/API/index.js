@@ -17,6 +17,8 @@ export const updateTodo = async (id, body) => {
 //POST： /todos
 export const addTodo = async (body) => {
     let requestBody = JSON.stringify(body)
+    console.log("-------")
+    console.log(requestBody)
     return await request(basicUrl, MethodType.POST, requestBody)
 }
 

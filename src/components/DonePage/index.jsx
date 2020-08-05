@@ -4,7 +4,7 @@ import DonePageContainer from '../../containers/DonePageContainer'
 const DonePage = () => (
     <div>
         <br/>
-        <DonePageContainer></DonePageContainer>
+        <DonePageContainer/>
     </div>
 )
 

@@ -1,12 +1,9 @@
 import TODO from '../Todo'
 import React from 'react'
 import {todoList} from "../../API";
+import {Empty} from "antd";
 
 class TodoList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         todoList().then(response => {
             this.props.addTodosFromUrl(response.data)
@@ -14,8 +11,11 @@ class TodoList extends React.Component {
     }
 
     render() {
+        if(this.props.todos.length === 0){
+            return (<Empty/>)
+        }
         return (
-            <ul>
+            <div className="site-card-border-less-wrapper">
                 {this.props.todos.map((todo) =>
                     <TODO key={todo.id}
                           {...todo}
@@ -23,7 +23,7 @@ class TodoList extends React.Component {
                           deleteClick={() => this.props.deleteClick(todo.id)}
                     />
                 )}
-            </ul>
+            </div>
         )
     }
 }

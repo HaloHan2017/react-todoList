@@ -1,4 +1,5 @@
 import {ADD_TODO, DELETE_TODO, GET_ALL_TODO_LIST_FROM_URL, TOGGLE_TODO} from './constants'
+import {addTodo, deleteTodo, updateTodo} from "../API";
 
 const defaultState = {
     todoTextList: []
@@ -14,15 +15,19 @@ const todoReducer = (state = defaultState, action) => {
                 completed: false
             }
             newState.todoTextList.push(todo)
+            addTodo(todo).then(resp =>resp)
             return newState
         case TOGGLE_TODO:
             newState.todoTextList = newState.todoTextList.map(todo => (todo.id === action.id) ? {
                 ...todo,
                 completed: !todo.completed
             } : todo)
+
+            // updateTodo(action.id,willUpdateTodo)
             return newState
         case DELETE_TODO:
             newState.todoTextList = newState.todoTextList.filter(todo => todo.id !== action.id);
+            deleteTodo(action.id)
             return newState
         case GET_ALL_TODO_LIST_FROM_URL:
             newState.todoTextList = action.todos.map(todo => {

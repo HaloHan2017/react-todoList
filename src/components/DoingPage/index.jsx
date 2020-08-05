@@ -7,10 +7,9 @@ class DoingPage extends React.Component {
         return (
             <div>
                 <br/>
-                <TodoListContainer/>
                 <TodoFromContainer/>
+                <TodoListContainer/>
             </div>
-
         )
     }
 }
