@@ -7,7 +7,7 @@ class DoneTodoList extends React.Component {
             <ul>
                 {this.props.todos.map((todo) =>
                     <TODO key={todo.id}
-                        {...todo}
+                          {...todo}
                     ></TODO>
                 )}
             </ul>
