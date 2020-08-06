@@ -10,7 +10,6 @@ export const MethodType = {
 export const request = (api, method = MethodType.GET, params = {}, config = {}) => {
     const data = (method === 'GET') ? 'params' : 'data'
     let headers = {
-        // 'X-Request-With': 'XMLHttpRequest',
         'Content-Type': 'application/json'
     }
     if (config.headers) {
@@ -20,22 +19,15 @@ export const request = (api, method = MethodType.GET, params = {}, config = {}) 
         }
     }
 
-    // todo
-    return axios({
-        url: api,
-        method,
-        [data]: params,
-        headers
+    return new Promise((resolve, reject) => {
+        axios({
+            url: api,
+            method,
+            [data]: params,
+            headers,
+        }).then(resolve)
+            .catch(error => {
+                reject(error)
+            })
     })
-    // return new Promise((resolve, reject) => {
-    //     axios({
-    //         url: api,
-    //         method,
-    //         [data]: params,
-    //         headers,
-    //     }).then(resolve)
-    //         .catch(error => {
-    //             reject(error)
-    //         })
-    // })
 }

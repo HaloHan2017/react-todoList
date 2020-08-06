@@ -1,16 +1,11 @@
 import {ADD_TODO, DELETE_TODO, GET_ALL_TODO_LIST_FROM_URL, TOGGLE_TODO} from './constants'
 import {deleteTodo} from "../API";
 
-const defaultState = {
-    todoTextList: []
-}
-
 const todoReducer = (state = [], action) => {
     let newState = JSON.parse(JSON.stringify(state))
     switch (action.type) {
         case ADD_TODO:
-            newState.unshift(action.todo)
-            return newState
+            return [action.todo, ...newState]
         case TOGGLE_TODO:
             newState = newState.map(todo => (todo.id === action.todo.id) ? {
                 ...todo,
