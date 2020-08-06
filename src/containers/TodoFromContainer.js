@@ -1,13 +1,14 @@
 import TodoForm from '../components/TodoForm'
 import {connect} from 'react-redux'
 import {generaterAddToDoAction} from '../actions/index'
-
-const mapStateToProps = (state) => ({})
+import {addTodo} from "../API";
 
 const mapDispatchToProps = (dispatch) => ({
     addTodo: (todoText) => {
-        dispatch(generaterAddToDoAction(todoText))
+        addTodo({content: todoText}).then(response => {
+            dispatch(generaterAddToDoAction(response.data))
+        })
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoForm)
+export default connect(null, mapDispatchToProps)(TodoForm)

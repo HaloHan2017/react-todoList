@@ -1,15 +1,13 @@
 import {ADD_TODO, DELETE_TODO, GET_ALL_TODO_LIST_FROM_URL, TOGGLE_TODO} from '../reducers/constants'
 
-let uuid = 0
-const generaterAddToDoAction = (todoText) => ({
+const generaterAddToDoAction = (todo) => ({
     type: ADD_TODO,
-    id: uuid++,
-    value: todoText
+    todo
 })
 
-const generaterToggleTodoAction = id => ({
+const generaterToggleTodoAction = todo => ({
     type: TOGGLE_TODO,
-    id
+    todo
 })
 
 const generaterDeleteClickAction = id => ({

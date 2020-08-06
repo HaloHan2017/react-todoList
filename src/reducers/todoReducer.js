@@ -1,43 +1,28 @@
 import {ADD_TODO, DELETE_TODO, GET_ALL_TODO_LIST_FROM_URL, TOGGLE_TODO} from './constants'
-import {addTodo, deleteTodo, updateTodo} from "../API";
+import {deleteTodo} from "../API";
 
 const defaultState = {
     todoTextList: []
 }
 
-const todoReducer = (state = defaultState, action) => {
+const todoReducer = (state = [], action) => {
     let newState = JSON.parse(JSON.stringify(state))
     switch (action.type) {
         case ADD_TODO:
-            let todo = {
-                id: action.id,
-                text: action.value,
-                completed: false
-            }
-            newState.todoTextList.push(todo)
-            addTodo(todo).then(resp =>resp)
+            newState.unshift(action.todo)
             return newState
         case TOGGLE_TODO:
-            newState.todoTextList = newState.todoTextList.map(todo => (todo.id === action.id) ? {
+            newState = newState.map(todo => (todo.id === action.todo.id) ? {
                 ...todo,
-                completed: !todo.completed
+                status: !todo.status
             } : todo)
-
-            // updateTodo(action.id,willUpdateTodo)
             return newState
         case DELETE_TODO:
-            newState.todoTextList = newState.todoTextList.filter(todo => todo.id !== action.id);
+            newState = newState.filter(todo => todo.id !== action.id);
             deleteTodo(action.id)
             return newState
         case GET_ALL_TODO_LIST_FROM_URL:
-            newState.todoTextList = action.todos.map(todo => {
-                return {
-                    id: todo.id,
-                    text: todo.content,
-                    completed: todo.status
-                }
-            })
-            return newState
+            return action.todos
         default:
             return state
     }

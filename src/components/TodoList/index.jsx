@@ -1,4 +1,4 @@
-import TODO from '../Todo'
+import Todo from '../Todo'
 import React from 'react'
 import {todoList} from "../../API";
 import {Empty} from "antd";
@@ -11,15 +11,17 @@ class TodoList extends React.Component {
     }
 
     render() {
+        // console.log("this.props.todos")
+        // console.log(this.props.todos)
         if(this.props.todos.length === 0){
             return (<Empty/>)
         }
         return (
             <div className="site-card-border-less-wrapper">
                 {this.props.todos.map((todo) =>
-                    <TODO key={todo.id}
+                    <Todo key={todo.id}
                           {...todo}
-                          onClick={() => this.props.toggleTodo(todo.id)}
+                          onClick={() => this.props.toggleTodo(todo)}
                           deleteClick={() => this.props.deleteClick(todo.id)}
                     />
                 )}

@@ -3,11 +3,9 @@ import {connect} from 'react-redux'
 import DoneTodoList from '../components/DoneToDoList'
 
 const mapStateToProps = state => {
-    return {todos: state.todoReducer.todoTextList.filter(t => t.completed)}
+    return {todos: state.todoReducer.filter(t => t.status)}
 }
-const mapDispatchToProps = dispatch => ({})
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(DoneTodoList)

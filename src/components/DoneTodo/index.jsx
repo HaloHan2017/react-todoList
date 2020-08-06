@@ -1,14 +1,13 @@
 import React from 'react'
 import {Button, Card, Divider, Space} from "antd";
 
-const DoneTodo = ({text, completed}) => (
+const DoneTodo = ({content, status}) => (
     <Divider>
         <Space>
-            <Card title={text}
+            <Card title={content}
                   style={{
-                      textDecoration: completed ? 'line-through' : 'none', width: 500, height: 40
+                      textDecoration: status ? 'line-through' : 'none', width: 500, height: 40
                   }} hoverable
-                // cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
             >
             </Card>
         </Space>
