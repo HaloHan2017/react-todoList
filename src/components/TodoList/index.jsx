@@ -11,8 +11,6 @@ class TodoList extends React.Component {
     }
 
     render() {
-        // console.log("this.props.todos")
-        // console.log(this.props.todos)
         if(this.props.todos.length === 0){
             return (<Empty/>)
         }

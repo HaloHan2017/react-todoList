@@ -1,8 +1,6 @@
 import React from 'react'
-import {Input} from "antd";
+import {Divider, Input, Space} from "antd";
 import "antd/dist/antd.css"
-import { UserOutlined,PlusCircleOutlined } from '@ant-design/icons';
-import { Divider,Space } from 'antd';
 
 class todoForm extends React.Component {
     constructor(props) {

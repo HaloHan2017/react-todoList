@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Card, Divider, Space} from "antd";
+import {Card, Divider, Space} from "antd";
 
 const DoneTodo = ({content, status}) => (
     <Divider>
